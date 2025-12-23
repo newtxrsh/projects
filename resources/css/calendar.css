@@ -1,0 +1,485 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: #0a0e1a;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 280px;
+    background: #131722;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-profile-section {
+    background: #2a2f3e;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-profile-section.expanded {
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+}
+
+.user-profile-section:hover {
+    background: #333849;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #4a90e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.user-email {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.chevron-icon {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    transition: transform 0.2s;
+}
+
+.user-profile-section.expanded .chevron-icon {
+    transform: rotate(90deg);
+}
+
+/* User Dropdown Menu */
+.user-dropdown-menu {
+    display: none;
+    margin-bottom: 24px;
+    margin-top: -12px;
+    background: rgba(15, 23, 42, 0.98);
+    border-radius: 0 0 12px 12px;
+    padding: 12px 16px 16px 16px;
+    animation: slideDown 0.2s ease-out;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-top: none;
+}
+
+.user-dropdown-menu.show {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-section {
+    flex: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+    background: #2a324b;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-btn {
+    width: 100%;
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.logout-btn:hover {
+    background: #bb2d3b;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    background: #0f1623;
+    overflow-y: auto;
+}
+
+.calendar-page {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.calendar-card, .week-card {
+    background: #0f1827;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 30px 60px rgba(6, 12, 24, 0.45);
+}
+
+.calendar-headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.calendar-title-block h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.calendar-title-block p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.month-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.month-button {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.month-button:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.month-label {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.calendar-weekdays,
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+}
+
+.calendar-weekdays {
+    margin-bottom: 10px;
+}
+
+.weekday {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.weekday.sun {
+    color: #f87171;
+}
+
+.day-tile {
+    min-height: 120px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(6, 12, 24, 0.65);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.day-tile:hover {
+    border-color: rgba(99, 102, 241, 0.55);
+    transform: translateY(-2px);
+}
+
+.day-tile.out {
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.day-number {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.day-tasks {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.day-task-pill {
+    font-size: 11px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.day-task-pill.school {
+    background: rgba(99, 102, 241, 0.18);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.day-task-pill.work {
+    background: rgba(250, 204, 21, 0.18);
+    border-color: rgba(250, 204, 21, 0.45);
+    color: #fde68a;
+}
+
+.day-task-pill.personal {
+    background: rgba(248, 113, 113, 0.18);
+    border-color: rgba(248, 113, 113, 0.4);
+    color: #fecaca;
+}
+
+.more-count {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.week-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.week-card-header h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.week-range {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}
+
+.week-task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.week-task-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 14px 18px;
+    background: rgba(15, 24, 39, 0.6);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
+    cursor: pointer;
+}
+
+.week-task-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    background: rgba(15, 24, 39, 0.8);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.week-task-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.week-task-title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.week-task-date {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: right;
+    min-width: 110px;
+}
+
+.week-task-info {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.category-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.category-chip.school {
+    background: rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+    border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.category-chip.work {
+    background: rgba(250, 204, 21, 0.2);
+    color: #fde68a;
+    border: 1px solid rgba(250, 204, 21, 0.45);
+}
+
+.category-chip.personal {
+    background: rgba(248, 113, 113, 0.2);
+    color: #fecaca;
+    border: 1px solid rgba(248, 113, 113, 0.4);
+}
+
+.day-task-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-badge.pending {
+    background: #3b82f6;
+    color: white;
+}
+
+.status-badge.ongoing {
+    background: #eab308;
+    color: white;
+}
+
+.status-badge.completed {
+    background: #22c55e;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+        padding: 16px 8px;
+    }
+
+    .user-details,
+    .user-name,
+    .user-email {
+        display: none;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+}

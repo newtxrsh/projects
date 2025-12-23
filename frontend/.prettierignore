@@ -1,0 +1,24 @@
+# Prettier ignore file
+
+# Dependencies
+node_modules/
+
+# Build outputs
+.nuxt/
+.output/
+dist/
+
+# Cache
+.cache/
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Auto-generated
+*.min.js
+*.min.css
+
+# Markdown (preserve manual formatting)
+*.md
