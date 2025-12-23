@@ -1,8 +1,12 @@
 <p align="center">
-  <img src="https://img.icons8.com/color/96/task-planning.png" alt="Listed Logo" width="96"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/Listed-3B82F6?style=for-the-badge&labelColor=1e293b&color=3B82F6">
+    <source media="(prefers-color-scheme: light)" srcset="https://img.shields.io/badge/Listed-3B82F6?style=for-the-badge&labelColor=f1f5f9&color=3B82F6">
+    <img alt="Listed Logo" src="https://img.shields.io/badge/Listed-3B82F6?style=for-the-badge&labelColor=1e293b&color=3B82F6" height="60">
+  </picture>
 </p>
 
-<h1 align="center">📋 Listed - Task Management System</h1>
+<h1 align="center">Listed - Task Management System</h1>
 
 <p align="center">
   <strong>A modern, collaborative task management application for personal and team productivity</strong>
