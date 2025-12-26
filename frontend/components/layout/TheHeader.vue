@@ -53,7 +53,7 @@
           <button class="user-menu-btn">
             <BaseAvatar 
               :name="authStore.userFullName" 
-              :src="authStore.currentUser?.profile_picture"
+              :src="authStore.currentUser?.profile_picture ?? undefined"
               size="sm"
             />
             <span class="user-name">{{ authStore.userName }}</span>

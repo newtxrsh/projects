@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export interface NotificationItem {
   notification_id: number
   user_id: number
-  type: 'task_due_reminder' | 'collaborator_added'
+  type: 'task_due_reminder' | 'task_overdue' | 'collaborator_added'
   title: string
   message: string
   task_id: number | null
